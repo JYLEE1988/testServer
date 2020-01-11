@@ -22,7 +22,15 @@ repositories {
 	mavenCentral()
 }
 
+apply plugin: 'war'
+bootWar {
+	archiveBaseName='restfulServer'
+	archiveFileName='restfulServer.war'
+	archiveVersion='0.0.1-SNAPSHOT'
+}
+
 dependencies {
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -32,6 +40,10 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
+
+//	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+//	compile('cz.jirutka.spring:embedmongo-spring:1.3.1')
+//	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 }
 
 test {

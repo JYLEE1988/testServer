@@ -7,5 +7,14 @@ public class TodoItemAdapter {
         return TodoItemResponse.builder().todoItem(toDoItem).errors(errors).build();
     }
 
+    public static TodoItem toTodoItem(final TodoItemRequest toDoItemRequest) {
+        if(toDoItemRequest == null) {
+            return null;
+        }
+        return TodoItem.builder()
+                .title(toDoItemRequest.getTitle())
+                .done(toDoItemRequest.isDone())
+                .build();
+    }
 
 }

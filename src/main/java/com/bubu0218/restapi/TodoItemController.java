@@ -25,4 +25,28 @@ public class TodoItemController {
         return TodoItemAdapter.toToDoItemResponse(toDoItem, errors);
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody List<TodoItemResponse> getAll() {
+        List<String> errors = new ArrayList<>();
+        List<TodoItem> toDoItems = toDoItemService.getAll();
+        List<TodoItemResponse> toDoItemResponses = new ArrayList<>();
+        toDoItems.stream().forEach(toDoItem -> {
+            toDoItemResponses.add(TodoItemAdapter.toToDoItemResponse(toDoItem, errors));
+        });
+        return toDoItemResponses;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody TodoItemResponse create(@RequestBody final TodoItemRequest toDoItemRequest) {
+        List<String> errors = new ArrayList<>();
+        TodoItem toDoItem = TodoItemAdapter.toTodoItem(toDoItemRequest);
+        System.out.println(toDoItemRequest.getTitle());
+        try {
+            toDoItem = toDoItemService.create(toDoItem);
+        } catch (final Exception e) {
+            errors.add(e.getMessage());
+            e.printStackTrace();
+        }
+        return TodoItemAdapter.toToDoItemResponse(toDoItem, errors);
+    }
 }
