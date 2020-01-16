@@ -1,4 +1,4 @@
-package com.bubu0218.restapi;
+package com.bubu0218.restapi.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

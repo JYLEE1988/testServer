@@ -1,10 +1,22 @@
-package com.bubu0218.restapi;
+package com.bubu0218.restapi.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * 배포서버
+ *
+ * http://133.130.57.24:8013/restfulServer/todo/
+ * post body raw json
+ * {"title":"할꺼..." , "done":false}
+ *
+ * 로컬서버
+ * http://localhost:8080/todo/
+ *
+ */
 
 @RestController
 @RequestMapping("/todo")
