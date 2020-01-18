@@ -1,6 +1,5 @@
 package com.bubu0218.restapi.push;
 
-import com.bubu0218.restapi.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +41,7 @@ public class PushItemController {
         List<String> errors = new ArrayList<>();
         PushItem pushItem = PushItemAdapter.toPushItem(pushItemRequest);
         System.out.println(pushItemRequest.getToken());
+        System.out.println(pushItemRequest.getDeviceId());
         try {
             pushItem = pushItemService.create(pushItem);
         } catch (final Exception e) {

@@ -13,6 +13,7 @@ public class PushItemAdapter {
         }
         return PushItem.builder()
                 .token(pushItemRequest.getToken())
+                .deviceId(pushItemRequest.getDeviceId())
                 .build();
     }
 

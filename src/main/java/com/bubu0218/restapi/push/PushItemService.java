@@ -16,6 +16,11 @@ public class PushItemService {
         return  pushItemRepository.findById(token).orElse(null);
     }
 
+    public List<PushItem> send(final String deviceId) {
+        // do id validation
+        return  pushItemRepository.findByDeviceId(deviceId);
+    }
+
     public PushItem create(final PushItem pushItem) {
         if(pushItem == null) {
             throw new NullPointerException("To Do Item cannot be null.");
